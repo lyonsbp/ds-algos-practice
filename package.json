@@ -1,0 +1,33 @@
+{
+  "name": "ds-algos-practice",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll"
+  },
+  "author": "Brandon Lyons",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.15.0",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16"
+  },
+  "devDependencies": {
+    "eslint-plugin-jest": "^26.2.0"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "jest"
+    ]
+  },
+  "jest": {
+    "transform": {}
+  }
+}
