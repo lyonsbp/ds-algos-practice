@@ -2,6 +2,7 @@ class BinaryHeap {
   constructor(arr) {
     this.heapArr = arr;
     this.size = this.heapArr.length;
+    this.heapify(Math.ceil(this.size / 2 - 1));
   }
 
   // Swaps element at index i with element at index j
@@ -32,13 +33,6 @@ class BinaryHeap {
   peek() {
     return this.heapArr[0];
   }
-}
-
-export class MinBinaryHeap extends BinaryHeap {
-  constructor(arr) {
-    super(arr);
-    this.heapify(Math.ceil(this.size / 2 - 1));
-  }
 
   heapify(i) {
     if (i < 0) return;
@@ -46,10 +40,8 @@ export class MinBinaryHeap extends BinaryHeap {
     let left = this.left(i);
     let right = this.right(i);
 
-    if (left < this.size && this.heapArr[left] < this.heapArr[i])
-      largest = left;
-    if (right < this.size && this.heapArr[right] < this.heapArr[largest])
-      largest = right;
+    if (left < this.size && this.compare(left, i)) largest = left;
+    if (right < this.size && this.compare(right, largest)) largest = right;
 
     this.swap(i, largest);
 
@@ -60,22 +52,19 @@ export class MinBinaryHeap extends BinaryHeap {
 export class MaxBinaryHeap extends BinaryHeap {
   constructor(arr) {
     super(arr);
-    this.heapify(Math.ceil(this.size / 2 - 1));
   }
 
-  heapify(i) {
-    if (i < 0) return;
-    let largest = i;
-    let left = this.left(i);
-    let right = this.right(i);
+  compare(child, root) {
+    return this.heapArr[child] > this.heapArr[root];
+  }
+}
 
-    if (left < this.size && this.heapArr[left] > this.heapArr[i])
-      largest = left;
-    if (right < this.size && this.heapArr[right] > this.heapArr[largest])
-      largest = right;
+export class MinBinaryHeap extends BinaryHeap {
+  constructor(arr) {
+    super(arr);
+  }
 
-    this.swap(i, largest);
-
-    this.heapify(i - 1);
+  compare(child, root) {
+    return this.heapArr[child] < this.heapArr[root];
   }
 }
