@@ -11,6 +11,9 @@ describe("Max Binary Heap", () => {
 
     maxHeap.insert(102);
     expect(maxHeap.peek()).toBe(102);
+
+    maxHeap.delete(102);
+    expect(maxHeap.peek()).toBe(94);
   });
 });
 
@@ -22,5 +25,8 @@ describe("Min Binary Heap", () => {
 
     minHeap.insert(1);
     expect(minHeap.peek()).toBe(1);
+
+    minHeap.delete(1);
+    expect(minHeap.peek()).toBe(7);
   });
 });
