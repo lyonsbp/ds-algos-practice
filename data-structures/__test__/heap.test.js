@@ -8,6 +8,9 @@ describe("Max Binary Heap", () => {
     const maxHeap = new MaxBinaryHeap([...arr]);
 
     expect(maxHeap.peek()).toBe(94);
+
+    maxHeap.insert(102);
+    expect(maxHeap.peek()).toBe(102);
   });
 });
 
@@ -16,5 +19,8 @@ describe("Min Binary Heap", () => {
     const minHeap = new MinBinaryHeap([...arr]);
 
     expect(minHeap.peek()).toBe(7);
+
+    minHeap.insert(1);
+    expect(minHeap.peek()).toBe(1);
   });
 });

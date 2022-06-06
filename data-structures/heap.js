@@ -2,7 +2,7 @@ class BinaryHeap {
   constructor(arr) {
     this.heapArr = arr;
     this.size = this.heapArr.length;
-    this.heapify(Math.ceil(this.size / 2 - 1));
+    this.heapify();
   }
 
   // Swaps element at index i with element at index j
@@ -34,8 +34,18 @@ class BinaryHeap {
     return this.heapArr[0];
   }
 
+  insert(val) {
+    this.heapArr.push(val);
+    this.size++;
+    this.heapify();
+  }
+
   heapify(i) {
+    // Allows us to default i for the first recursive call
+    if (i === undefined) i = Math.ceil(this.size / 2 - 1);
+    // Base case, prevent recursive loop
     if (i < 0) return;
+
     let largest = i;
     let left = this.left(i);
     let right = this.right(i);
@@ -43,7 +53,8 @@ class BinaryHeap {
     if (left < this.size && this.compare(left, i)) largest = left;
     if (right < this.size && this.compare(right, largest)) largest = right;
 
-    this.swap(i, largest);
+    // Only swap if a larger/smaller element was found
+    if (largest !== i) this.swap(i, largest);
 
     this.heapify(i - 1);
   }
