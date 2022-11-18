@@ -4,3 +4,10 @@ Usage Instructions:
 
 - install deps with `npm install`
 - run interactive tests (jest) with `npm run test:watch`
+
+
+Solutions are in branch `solutions` and can be accessed with:
+```
+git checkout solutions
+git pull
+```
